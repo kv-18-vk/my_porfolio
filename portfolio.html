@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vishnu Vardhan Reddy — Portfolio</title>
+  <meta name="description" content="Single-page personal website showcasing skills, projects, experience, and contact info." />
+  <meta property="og:title" content="Vishnu Vardhan Reddy — Portfolio" />
+  <meta property="og:description" content="Single-page personal website showcasing skills, projects, experience, and contact info." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <meta name="msapplication-TileColor" content="#0ea5e9" />
+  <meta name="msapplication-navbutton-color" content="#0ea5e9" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="#0ea5e9" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>∏</text></svg>">
+  <style>
+    :root{
+      --bg: #0b1020;
+      --surface: #0f1730;
+      --muted: #a7b3d0;
+      --text: #eaf1ff;
+      --accent: #60a5fa;
+      --accent-2: #34d399;
+      --card: #0d1328;
+      --ring: rgba(96,165,250,.45);
+    }
+    :root.light{
+      --bg: #f7f9ff;
+      --surface: #ffffff;
+      --muted: #5a6478;
+      --text: #0f172a;
+      --accent: #2563eb;
+      --accent-2: #059669;
+      --card: #ffffff;
+      --ring: rgba(37,99,235,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text); background: radial-gradient(1200px 600px at 80% -10%, rgba(96,165,250,.15), transparent 50%),
+      radial-gradient(900px 500px at 0% 20%, rgba(52,211,153,.12), transparent 45%), var(--bg);
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(8px);background:color-mix(in srgb, var(--surface) 80%, transparent);border-bottom:1px solid rgba(255,255,255,.06);z-index:20}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.3px}
+    .brand-logo{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent-2)); box-shadow:0 6px 20px rgba(0,0,0,.2)}
+    .brand-logo span{font-weight:900;color:white}
+    .nav a{padding:10px 12px;border-radius:10px}
+    .nav a:hover{background:rgba(255,255,255,.06);text-decoration:none}
+    .nav-right{display:flex;align-items:center;gap:8px}
+    button.icon{border:1px solid rgba(255,255,255,.12);background:var(--card);color:var(--text);padding:8px 10px;border-radius:10px;cursor:pointer}
+    button.icon:focus{outline:2px solid var(--ring);outline-offset:2px}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center;padding:60px 0}
+    .tag{display:inline-flex;gap:6px;align-items:center;background:rgba(96,165,250,.12);border:1px solid rgba(96,165,250,.25);color:var(--text);border-radius:999px;padding:6px 10px;font-size:12px}
+    h1{font-size:42px;line-height:1.15;margin:10px 0 16px}
+    .lead{color:var(--muted);font-size:18px}
+    .cta{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg, color-mix(in srgb, var(--surface) 70%, transparent), color-mix(in srgb, var(--surface) 50%, transparent));color:var(--text);cursor:pointer}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));border:none;color:white}
+    .btn:hover{text-decoration:none;transform:translateY(-1px)}
+    .portrait{aspect-ratio:1/1;border-radius:18px;background:linear-gradient(135deg, rgba(96,165,250,.25), rgba(52,211,153,.25));display:grid;place-items:center;position:relative;overflow:hidden}
+    .portrait svg{width:65%;opacity:.9}
+
+    /* Sections */
+    section{padding:28px 0}
+    .section-title{font-size:22px;margin:0 0 12px}
+    .grid{display:grid;gap:16px}
+    .cards{grid-template-columns:repeat(3, minmax(0,1fr))}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.08);padding:16px;border-radius:14px;transition:transform .2s ease, box-shadow .2s ease}
+    .card:hover{transform:translateY(-3px); box-shadow:0 10px 35px rgba(0,0,0,.25)}
+    .muted{color:var(--muted)}
+
+    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .chip{border:1px solid rgba(255,255,255,.12);padding:8px 10px;border-radius:999px;background:color-mix(in srgb, var(--surface) 80%, transparent);font-size:14px}
+
+    .timeline{border-left:2px dashed rgba(255,255,255,.15);padding-left:16px}
+    .timeline .row{margin:16px 0}
+    .timeline .row h4{margin:0}
+    .timeline .row .when{font-size:13px;color:var(--muted)}
+
+    footer{margin:40px 0 20px;color:var(--muted);text-align:center}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+    }
+    @media (max-width:700px){
+      .cards{grid-template-columns:1fr}
+      h1{font-size:34px}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Katasani Vishnu Vardhan Reddy",
+    "url": "https://example.com",
+    "sameAs": [
+      "https://github.com/kv-18-vk/Typing-Speed-Tester"
+    ],
+    "jobTitle": "Software Developer / Student",
+    "knowsAbout": ["Algorithms","Web Development","Data Structures","SQL","JavaScript","C++","VHDL"],
+    "alumniOf": "",
+    "email": "mailto:you@example.com"
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true"><span>∏</span></div>
+        <span>Vishnu Vardhan Reddy</span>
+      </div>
+      <nav class="nav-right" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <button class="icon" id="themeBtn" aria-label="Toggle theme">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="home">
+      <div>
+        <span class="tag">IITI CSE STUDENT</span>
+        <h1>Hi, I’m Vishnu — I build fast, clean web apps and love elegant algorithms.</h1>
+        <p class="lead">Focused on problem solving, full‑stack web dev, and delightful UX. Currently doing a SuperMarket Database Management with MYSQL and React.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">See Projects</a>
+        </div>
+      </div>
+      <div class="portrait" aria-hidden="true">
+        <!-- Replace this with your photo -->
+        <img src="profile2.jpg" alt="Vishnu Vardhan Reddy" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <div class="card">
+        <p>I’m a cse student with a knack for mathematical thinking. I enjoy crafting performant interfaces, designing clean schemas, and proving things about the code I write. Recently: built a responsive auth UI with shared layout for login/register, and added multiplayer/gamification to a typing app.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills">
+        <span class="chip">HTML • CSS • JS</span>
+        <span class="chip">React</span>
+        <span class="chip">Node/Express</span>
+        <span class="chip">SQL • MySQL</span>
+        <span class="chip">C++</span>
+        <span class="chip">Algorithms & DS</span>
+        <span class="chip">VHDL</span>
+        <span class="chip">Git • GitHub</span>
+        <span class="chip">Firebase</span>
+        <span class="chip">UI/UX</span>
+        <span class="chip">Python</span>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="grid cards">
+        <article class="card">
+          <h3>Typing Speed Tester</h3>
+          <p class="muted">Fast‑Fingers — realtime WPM, accuracy, and leaderboards. Adding 1v1 multiplayer and streak‑based rewards.</p>
+          <p><a href="https://github.com/kv-18-vk/Typing-Speed-Tester" target="_blank" rel="noopener">Details</a></p>
+        </article>
+        <article class="card">
+          <h3>SuperMarket Management System</h3>
+          <p class="muted">A full-stack inventory + billing system for supermarkets. Supports product entries, stock tracking, automatic expiry handling and discounts. Designed for fast checkout and clean data consistency. </p>
+          <p><a href="https://datamart-supermarket.netlify.app/">Demo</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <h2 class="section-title">Achievements</h2>
+      <div class="grid cards">
+        <!-- You can add your achievements, marks, and other accomplishments here -->
+        <div class="card">
+          <h3>BTech</h3>
+          <p class="muted">CPI: 7.59 (as of 3rd semester)</p>
+        </div>
+        <div class="card">
+          <h3>JEE 2024</h3>
+          <p class="muted">ADVANCE - AIR 1765</p>
+          <p class="muted">MAINS - AIR 134 (Marks: 285/300)</p>
+        </div>
+        <div class="card">
+          <h3>AP Board</h3>
+          <p class="muted">Intermediate: 976/1000</p>
+          <p class="muted">10th standard: 576/600</p>
+        </div>
+
+        <!-- Add more achievement cards as needed -->
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="grid" style="grid-template-columns:1fr; gap:18px">
+        <div class="card">
+          <p>Email: <a href="mailto:cse240001040@iiti.ac.in">cse240001040@iiti.ac.in</a></p>
+          <p>GitHub: <a href="https://github.com/kv-18-vk" target="_blank" rel="noopener">@kv-18-vk</a></p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> Vishnu Vardhan Reddy • Built with vanilla HTML/CSS/JS</p>
+    </footer>
+  </main>
+
+  <script>
+    // Theme toggle (light/dark)
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const saved = localStorage.getItem('theme');
+    if(saved === 'light') root.classList.add('light');
+    themeBtn.addEventListener('click', () => {
+      root.classList.toggle('light');
+      localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
+    });
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if(id.length > 1){ e.preventDefault(); document.querySelector(id).scrollIntoView({behavior:'smooth'}); }
+      });
+    });
+
+    // Subtle section reveal on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if(entry.isIntersecting){ entry.target.style.transform='translateY(0)'; entry.target.style.opacity='1'; } });
+    }, {threshold:.12});
+    document.querySelectorAll('section .card, .grid.cards .card, .timeline .row').forEach(el => {
+      el.style.opacity='0'; el.style.transform='translateY(10px)'; el.style.transition='all .5s ease'; observer.observe(el);
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
