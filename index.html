@@ -140,7 +140,6 @@
         </div>
       </div>
       <div class="portrait" aria-hidden="true">
-        <!-- Replace this with your photo -->
         <img src="profile2.jpg" alt="Vishnu Vardhan Reddy" style="width: 100%; height: 100%; object-fit: cover;">
       </div>
     </section>
@@ -188,7 +187,6 @@
     <section id="achievements">
       <h2 class="section-title">Achievements</h2>
       <div class="grid cards">
-        <!-- You can add your achievements, marks, and other accomplishments here -->
         <div class="card">
           <h3>BTech</h3>
           <p class="muted">CPI: 7.59 (as of 3rd semester)</p>
@@ -203,8 +201,6 @@
           <p class="muted">Intermediate: 976/1000</p>
           <p class="muted">10th standard: 576/600</p>
         </div>
-
-        <!-- Add more achievement cards as needed -->
       </div>
     </section>
 
@@ -224,17 +220,21 @@
   </main>
 
   <script>
-    // Theme toggle (light/dark)
+    
     const root = document.documentElement;
     const themeBtn = document.getElementById('themeBtn');
     const saved = localStorage.getItem('theme');
-    if(saved === 'light') root.classList.add('light');
+    if(saved === 'dark') {
+      root.classList.remove('light');
+    } else {
+      root.classList.add('light'); 
+    }
     themeBtn.addEventListener('click', () => {
       root.classList.toggle('light');
       localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
     });
 
-    // Smooth scroll for internal links
+    
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
         const id = a.getAttribute('href');
@@ -242,7 +242,7 @@
       });
     });
 
-    // Subtle section reveal on scroll
+   
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => { if(entry.isIntersecting){ entry.target.style.transform='translateY(0)'; entry.target.style.opacity='1'; } });
     }, {threshold:.12});
@@ -250,8 +250,9 @@
       el.style.opacity='0'; el.style.transform='translateY(10px)'; el.style.transition='all .5s ease'; observer.observe(el);
     });
 
-    // Year
+ 
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
+
